@@ -5,7 +5,7 @@
 
     <groupId>co.akarin</groupId>
     <artifactId>EndMinecraftUltra</artifactId>
-    <version>0.19.0</version>
+    <version>0.18.2</version>
     <packaging>jar</packaging>
     <name>EndMinecraftUltra</name>
 
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>com.github.steveice10</groupId>
             <artifactId>mcprotocollib</artifactId>
-            <version>1.19-1</version>
+            <version>1.18.2-1</version>
         </dependency>
     </dependencies>
 
@@ -104,10 +104,25 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.4.2</version>
                 <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>co.akarin.endminecraftultra.main.main</mainClass>
+                        </manifest>
+                    </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

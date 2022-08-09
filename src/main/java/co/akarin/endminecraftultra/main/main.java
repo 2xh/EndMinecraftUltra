@@ -26,18 +26,12 @@ public class main {
     }
 
     private static void getInfo() throws NamingException {
-        log("欢迎使用EndMinecraftUltra压测工具 协议库版本:1.18.1", "",  "=======================");
-        log("请输入服务器IP/域名地址");
+        log("欢迎使用EndMinecraftUltra网络测试工具 协议库版本:1.18.2", "",  "=======================");
+        log("请输入服务器地址(不含端口)");
         ip = scanner.nextLine();
-        if (ip.contains(":")) {
-            String[] tmpip = ip.split(":");
-            ip = tmpip[0];
-            port = Integer.parseInt(tmpip[1]);
-        } else {
-            log("请输入端口(默认25565)");
-            port = getCo(scanner.nextLine(), 25565);
-        }
-        Hashtable<String, String> hashtable = new Hashtable<String, String>();
+        log("请输入端口(默认25565)");
+        port = getCo(scanner.nextLine(), 25565);
+        /* Hashtable<String, String> hashtable = new Hashtable<String, String>();
         hashtable.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
         hashtable.put("java.naming.provider.url", "dns:");
         try {
@@ -50,13 +44,13 @@ public class main {
                 port = Integer.parseInt(re[2]);
                 log("port: " + port);
             }
-        } catch (Exception e) {}
+        } catch (Exception e) {} */
     }
 
     private static void showMenu() throws IOException, InterruptedException {
         Menu menu = new Menu(scanner, ip, port);
         while (true) {
-            log("请输入攻击方式：", "1 : MOTD攻击", "2 : 分布式假人压测(集群压测)");
+            log("请输入测试方式：", "1 : MOTD测试", "2 : 分布式假人测试");
             log("========================");
             switch (getCo(scanner.nextLine(), 2)) {
                 case 1:
